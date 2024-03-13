@@ -2,30 +2,33 @@ For Robot Preparation:
 
 1. Download Raspberry Pi image Ubiquity from : https://ubiquity-pi-image.sfo2.digitaloceanspaces.com/2023-02-09-ubiquity-base-gdm3-focal-raspberry-pi.img.xz
 2. Stop the RPi hostspot and connect to the internet for update.
-3. Update the RPi image : '''sudo apt update'''
-4. FYI, Ubiquity will continue update in background once RPi connected to the internet.
-5. So, the best way to know the completion is completed by rebooting the RPi : sudo reboot
-6. Install samba : sudo apt install samba
-7. Run again Step #6 if it failed.
-8. Go to /etc/samba and edit file name smb.conf with below addition:
+3. Update the RPi image :
+   '''
+   sudo apt update
+   '''
+5. FYI, Ubiquity will continue update in background once RPi connected to the internet.
+6. So, the best way to know the completion is completed by rebooting the RPi : sudo reboot
+7. Install samba : sudo apt install samba
+8. Run again Step #6 if it failed.
+9. Go to /etc/samba and edit file name smb.conf with below addition:
    (a) wins support = yes
    (b) [catkin_dk_src]
          comment = Samba on Ubuntu
          path = /home/ubuntu/catkin_dk/src
          read only = no
          browsable = yes
-9. Update Samba password : sudo smbpasswd -a ubuntu
-10. Enter new password whenever ask. (Prefer = ubuntu)
-11. Restart robot : sudo reboot
-12. Install I2C library : sudo apt-get install libi2c-dev
-13. Setting up the path for roscore at this location : cd /etc/ubiquity/
-14. Edit file name ros_setup.bash : sudo nano ros_setup.bash
-15. Comment the 1st catkin_setup line and add NEW catkin_setup :catkin_setup=/home/ubuntu/catkin_dk/devel/setup.bash && test -f $catkin_setup && . $catkin_setup
-16. Restart robot : sudo reboot
-17. Create catkin : mkdir -p ~/catkin_dk/src
-18. Go to catkin folder : cd catkin_dk
-19. Make the catkin : catkin_make
-20. Add 3 lines as below in .bashrc file
+10. Update Samba password : sudo smbpasswd -a ubuntu
+11. Enter new password whenever ask. (Prefer = ubuntu)
+12. Restart robot : sudo reboot
+13. Install I2C library : sudo apt-get install libi2c-dev
+14. Setting up the path for roscore at this location : cd /etc/ubiquity/
+15. Edit file name ros_setup.bash : sudo nano ros_setup.bash
+16. Comment the 1st catkin_setup line and add NEW catkin_setup :catkin_setup=/home/ubuntu/catkin_dk/devel/setup.bash && test -f $catkin_setup && . $catkin_setup
+17. Restart robot : sudo reboot
+18. Create catkin : mkdir -p ~/catkin_dk/src
+19. Go to catkin folder : cd catkin_dk
+20. Make the catkin : catkin_make
+21. Add 3 lines as below in .bashrc file
     (a) source ~/catkin_dk/devel/setup.bash
     (b) export ROS_MASTER_URI=http://<robot_IP>:11311
     (c) export ROS_HOSTNAME=<robot_IP>
