@@ -42,13 +42,36 @@ For Robot Preparation:
 32. Git clone file : git clone https://github.com/ros-teleop/teleop_twist_keyboard.git
 33. Back to catkin_dk folder : cd ~/catkin_dk
 34. Make the catkin : catkin_make
-35. Back to catkin_dk/src folder : cd ~/catkin_dk/src
-36. Git clone file : git clone https://github.com/UbiquityRobotics/raspicam_node.git
-37. Go to /etc/ros/rosdep/sources.list.d/ folder.
-38. Create a file name as 30-ubiquity.list
-39. Add this line into that file : yaml https://raw.githubusercontent.com/UbiquityRobotics/rosdep/master/raspberry-pi.yaml
-40. Update ROS repositoty : rosdep update
-41. Back to catkin_dk folder : cd ~/catkin_dk
-42. Run this code : rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
-43. Make the file : catkin_make
-44. For RPi3B+ USE this command :  catkin_make -j2
+    
+    -----FOR RASPBERRY PI 4 MODEL B------
+1. Back to catkin_dk/src folder : cd ~/catkin_dk/src
+2. Git clone file : git clone https://github.com/UbiquityRobotics/raspicam_node.git
+3. Go to /etc/ros/rosdep/sources.list.d/ folder.
+4. Create a file name as 30-ubiquity.list
+5. Add this line into that file : yaml https://raw.githubusercontent.com/UbiquityRobotics/rosdep/master/raspberry-pi.yaml
+6. Update ROS repositoty : rosdep update
+7. Back to catkin_dk folder : cd ~/catkin_dk
+8. Run this code : rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
+9. Make the file : catkin_make
+    
+    -----FOR RASPBERRY PI 3 MODEL B+ ------
+1. Back to catkin_dk/src folder : cd ~/catkin_dk/src
+2. Git clone file : git clone https://github.com/dganbold/raspicam_node.git
+3. Allocate 1GB swap area : sudo fallocate -l 1G /swapfile
+4. Verify by : ls -lh /swapfile
+   Output : -rw-r--r-- 1 root root 1.0G <timestamp> /swapfile
+5. Enabling swapfile : sudo chmod 600 /swapfile
+6. Verify by : ls -lh /swapfile
+   Output : -rw------- 1 root root 1.0G <timestamp> /swapfile
+7. Marking the swapfile : sudo mkswap /swapfile
+8. Enabling swapfile : sudo swapon /swapfile
+9. Making swapfile permanent : sudo cp /etc/fstab /etc/fstab.bak
+10. Add info into swapfile : echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+11. Set swappiness to 10 : sudo sysctl vm.swappiness=10
+12. Adjusting cache pressure setting : sudo sysctl vm.vfs_cache_pressure=50
+13. Add info into sysctl.conf file at last line:
+    (a) vm.swappiness=10
+    (b) vm.vfs_cache_pressure=50
+14. Back to catkin_dk folder : cd ~/catkin_dk
+15. Make the file : catkin_make
+16. Restart robot : sudo reboot
