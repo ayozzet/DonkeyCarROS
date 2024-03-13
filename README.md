@@ -2,10 +2,7 @@ For Robot Preparation:
 
 1. Download Raspberry Pi image Ubiquity from : https://ubiquity-pi-image.sfo2.digitaloceanspaces.com/2023-02-09-ubiquity-base-gdm3-focal-raspberry-pi.img.xz
 2. Stop the RPi hostspot and connect to the internet for update.
-3. Update the RPi image :
-   '''
-   sudo apt update
-   '''
+3. Update the RPi image :```sudo apt update```
 5. FYI, Ubiquity will continue update in background once RPi connected to the internet.
 6. So, the best way to know the completion is completed by rebooting the RPi : sudo reboot
 7. Install samba : sudo apt install samba
