@@ -11,7 +11,6 @@ try:
 
 except:
     print("NOT OK")
-    break
 
 cap.release()
 cv2.destroyAllWindows()
