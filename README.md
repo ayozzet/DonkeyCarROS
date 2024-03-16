@@ -1,10 +1,16 @@
-#ROS DonkeyCar
-For Robot Preparation:
+# DonkeyCar-ROS
+DonkeyCar on a Raspberry Pi with ROS and Ubiquity.
 
-1. Download Raspberry Pi image Ubiquity from : https://ubiquity-pi-image.sfo2.digitaloceanspaces.com/2023-02-09-ubiquity-base-gdm3-focal-raspberry-pi.img.xz
-2. Stop the RPi hostspot and connect to the internet for update.
-3. Update the RPi image :```sudo apt update```
-5. FYI, Ubiquity will continue update in background once RPi connected to the internet.
+## Software Requirements
+On the Raspberry Pi, we use Ubiquity as a platform for images.
+
+Download Raspberry Pi image Ubiquity from  https://ubiquity-pi-image.sfo2.digitaloceanspaces.com/2023-02-09-ubiquity-base-gdm3-focal-raspberry-pi.img.xz.
+
+## Installation
+To get updates, turn off the Raspberry Pi hostspot and make an internet connection.
+
+Update the RaspberPi image```sudo apt update```
+1. FYI, Ubiquity will continue update in background once RPi connected to the internet.
 6. So, the best way to know the completion is completed by rebooting the RPi : ```sudo reboot```
 7. Install samba : ```sudo apt install samba```
 8. Run again Step #6 if it failed.
