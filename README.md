@@ -9,7 +9,11 @@ Download Raspberry Pi image Ubiquity from  https://ubiquity-pi-image.sfo2.digita
 ## Installation
 To get updates, turn off the Raspberry Pi hostspot and make an internet connection.
 
-Update the RaspberPi image```sudo apt update```
+Make sure your Debian package index is up-to-date
+
+```#
+sudo apt update
+```
 1. FYI, Ubiquity will continue update in background once RPi connected to the internet.
 6. So, the best way to know the completion is completed by rebooting the RPi : ```sudo reboot```
 7. Install samba : ```sudo apt install samba```
