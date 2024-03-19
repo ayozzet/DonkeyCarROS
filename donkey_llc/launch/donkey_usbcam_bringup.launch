@@ -1,0 +1,16 @@
+<launch>
+
+<include file="$(find i2cpwm_board)/launch/i2cpwm_node.launch"/>
+<include file="$(find usb_cam)/launch/usb_cam.launch">
+  <param name="video_device" value="/dev/video0" />
+  <param name="image_width" value="640" />
+  <param name="image_height" value="480" />
+  <param name="pixel_format" value="yuyv" />
+  <param name="camera_frame_id" value="usb_cam" />
+  <param name="io_method" value="mmap"/>
+</include>
+
+<node pkg="donkey_llc" name="dk_llc" type="low_level_control.py" output="screen">
+</node>
+
+</launch>
