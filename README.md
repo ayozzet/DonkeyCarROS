@@ -48,7 +48,7 @@ and
 
 - Then, update Samba password and enter a new password whenever asked.`Prefer = Ubuntu`:
 ```#
-sudo passwd -a ubuntu
+sudo smbpasswd -a ubuntu
 ```
 
 
