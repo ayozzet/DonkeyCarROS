@@ -1,7 +1,5 @@
 #!usr/bin/python3
 
-#Author by Rishiyendra 
-
 import rospy
 import cv2
 import numpy as np
@@ -11,14 +9,14 @@ from sensor_msgs.msg import CompressedImage
 from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 
-model = YOLO("best.pt")
+model = YOLO("yolov8n.pt")
 names = model.model.names
 
-class DonkeyCar(object):
+class Yolo:
 
 	def __init__(self):
-		self.image_sub = rospy.Subscriber("/raspicam_node/image/compressed", CompressedImage, self.camera_callback)
-		#self.image_sub = rospy.Subscriber("/usb_cam/image_raw/compressed", CompressedImage, self.camera_callback)
+		# self.image_sub = rospy.Subscriber("/raspicam_node/image/compressed", CompressedImage, self.camera_callback, queue_size=1, buff_size=2**24)
+		self.image_sub = rospy.Subscriber("/usb_cam/image_raw/compressed", CompressedImage, self.camera_callback, queue_size=1, buff_size=2**24)
 		self.ctrl_c = False
 
 	def camera_callback(self, data):
@@ -57,8 +55,8 @@ class DonkeyCar(object):
 
 
 def main():
-	rospy.init_node('donkey_node', anonymous=True)
-	drone_image_node = DonkeyCar()
+	rospy.init_node('image_detection_node', anonymous=True)
+	image_detection_node = Yolo()
 	try:
 		rospy.spin()
 	except rospy.ROSInterruptException:
